@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Azlan — Portfolio</title>
+  <meta name="description" content="Portfolio of Muhammad Azlan — HPC & Cloud Infrastructure Specialist, AI Researcher, and Mobile Developer." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='24' fill='%230f172a'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='white' font-family='Segoe UI, Roboto, Arial'>MA</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #0f172a;
+      --accent: #8b5cf6;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --surface: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .hero-meta {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-link:hover, .nav-link[aria-current="true"] {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* SECTIONS */
+    section { padding: 70px 0; }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--text);
+      margin-bottom: 48px;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* ABOUT */
+    .about-wrapper {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .profile-card {
+      background: var(--surface);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      text-align: center;
+      position: sticky;
+      top: 100px;
+    }
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      object-fit: cover;
+      border: 5px solid #f1f5f9;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.2);
+    }
+    .profile-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .profile-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .social-links {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      border-radius: 10px;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .social-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+    }
+    .icon { width: 20px; height: 20px; }
+    
+    .about-content {
+      background: var(--surface);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+    .about-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .interest-tag {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 10px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .timeline-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px;
+      top: 28px;
+      width: 14px;
+      height: 14px;
+      background: var(--primary);
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.2);
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+      gap: 16px;
+    }
+    .item-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .item-subtitle {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .item-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      background: var(--light);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+    .item-desc {
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .tag {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .skill-card {
+      background: var(--surface);
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .skill-card h3 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .skill-list {
+      list-style: none;
+    }
+    .skill-list li {
+      padding: 10px 0;
+      color: var(--text);
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-list li:last-child { border-bottom: none; }
+    .skill-list li::before {
+      content: "→";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* AWARDS */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .award-card {
+      background: var(--surface);
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-left: 5px solid var(--primary);
+      transition: all 0.3s;
+    }
+    .award-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .award-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .award-org {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .award-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .cert-card {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .cert-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+    .cert-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .cert-issuer {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .cert-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .cert-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 60px 0 30px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    footer h3 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    footer p {
+      margin: 10px 0;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+    .footer-social {
+      margin-top: 32px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .profile-card { position: static; }
+      .timeline { padding-left: 30px; }
+      .timeline-item::before { left: -41px; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .subtitle { font-size: 1.1rem; }
+      .item-header { flex-direction: column; align-items: start; }
+      .item-date { align-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero-content">
+      <h1>Muhammad Azlan</h1>
+      <p class="subtitle">Computer Science Graduate</p>
+      <p class="hero-meta">GPA 3.84/4.0 | Gujrat, Pakistan</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#awards">Awards</a>
+      <a class="nav-link" href="#certifications">Certifications</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-wrapper">
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/140" alt="Muhammad Azlan" class="profile-img">
+          <h3>Muhammad Azlan</h3>
+          <p>B.Sc. (Honors) Computer Science<br>University of Gujrat<br>GPA: 3.84/4.0</p>
+          <div class="social-links">
+            <a class="social-link" href="https://linkedin.com/in/muhammad-azlan-dev" target="_blank" title="LinkedIn">
+              <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#0A66C2" d="M20.452 20.452h-3.555v-5.569c0-1.328-.027-3.036-1.85-3.036-1.853 0-2.136 1.447-2.136 2.94v5.665H9.356V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.367-1.85 3.6 0 4.267 2.37 4.267 5.451v6.29zM5.337 7.433a2.064 2.064 0 1 1 0-4.128 2.064 2.064 0 0 1 0 4.128zM7.114 20.452H3.56V9h3.555v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.73v20.54C0 23.226.792 24 1.771 24h20.454C23.2 24 24 23.226 24 22.27V1.73C24 .774 23.2 0 22.225 0z"/></svg>
+            </a>
+            <a class="social-link" href="https://github.com/Muhammad-Azlan-74" target="_blank" title="GitHub">
+              <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.16 9.09 7.55 10.57.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.07.67-3.72-1.48-3.72-1.48-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.97 1.66 2.55 1.18 3.17.9.1-.7.38-1.18.69-1.45-2.45-.28-5.02-1.23-5.02-5.46 0-1.21.43-2.2 1.13-2.98-.11-.28-.49-1.4.11-2.92 0 0 .93-.3 3.05 1.13.89-.25 1.85-.38 2.8-.38.95 0 1.91.13 2.8.38 2.12-1.43 3.05-1.13 3.05-1.13.6 1.52.22 2.64.11 2.92.7.78 1.13 1.77 1.13 2.98 0 4.24-2.58 5.18-5.04 5.45.39.33.74.97.74 1.96 0 1.41-.01 2.55-.01 2.9 0 .29.2.64.76.53 4.38-1.48 7.54-5.65 7.54-10.57C23.25 5.48 18.27.5 12 .5z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="about-content">
+          <p>Recent Computer Science graduate with strong academic standing (GPA 3.84/4.0) and hands-on experience in AI, HPC, and cloud-native systems. Developed a portfolio of projects ranging from LLM-powered chatbots to Ignite-funded applications and GPU-based deep learning research.</p>
+          <p>Motivated to pursue Master's research in AI, ML, and scalable computing systems.</p>
+          
+          <div class="interests">
+            <span class="interest-tag">High-Performance Computing</span>
+            <span class="interest-tag">Artificial Intelligence</span>
+            <span class="interest-tag">Cloud Computing</span>
+            <span class="interest-tag">Deep Learning</span>
+            <span class="interest-tag">Mobile Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience & Leadership</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">AI Mobile App Developer</div>
+              <div class="item-subtitle">RapidsAI</div>
+            </div>
+            <div class="item-date">Jun 2025 – Present</div>
+          </div>
+          <p class="item-desc">Working as an AI Mobile App Developer at RapidsAI in Islamabad, developing intelligent mobile applications integrating AI capabilities and machine learning models for enhanced user experiences.</p>
+          <div class="tags">
+            <span class="tag">Mobile Development</span>
+            <span class="tag">AI Integration</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">DenseFusion</div>
+              <div class="item-subtitle">SuperComputing and AI Solutions</div>
+            </div>
+            <div class="item-date">May 2025 – Present</div>
+          </div>
+          <p class="item-desc">Working with Dr. Tariq Saeed at DenseFusion (Spin-off of NUST) on supercomputing and AI solutions in the Information and Communication sector.</p>
+          <div class="tags">
+            <span class="tag">HPC</span>
+            <span class="tag">AI Solutions</span>
+            <span class="tag">Cloud Infrastructure</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">HPC Trainer</div>
+              <div class="item-subtitle">DenseFusion (Spin-off of NUST)</div>
+            </div>
+            <div class="item-date">Aug 2025</div>
+          </div>
+          <p class="item-desc">Conducted official training for a national defence and advanced research institute, focusing on HPC system design, cluster deployment, and performance optimization, while delivering real-time demonstrations of supercomputing cluster setup and simulation workflows.</p>
+          <div class="tags">
+            <span class="tag">Training</span>
+            <span class="tag">Cluster Deployment</span>
+            <span class="tag">Performance Optimization</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Mentor</div>
+              <div class="item-subtitle">Karwan-e-Hunar, NUST</div>
+            </div>
+            <div class="item-date">Jul – Aug 2025</div>
+          </div>
+          <p class="item-desc">Delivered a month-long mentorship program for students at the School of Interdisciplinary Engineering & Sciences (NUST), guiding them in AI-based mobile app prototyping, startup ideation, and applied model development to empower youth with tech-driven innovation.</p>
+          <div class="tags">
+            <span class="tag">Mentorship</span>
+            <span class="tag">AI</span>
+            <span class="tag">Mobile Development</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Vice President</div>
+              <div class="item-subtitle">Hayatian Computing Alumni</div>
+            </div>
+            <div class="item-date">Jun 2025 – Present</div>
+          </div>
+          <p class="item-desc">Organized technical sessions and mentorship programs with alumni to foster innovation, practical skills, and research readiness among CS students.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">President</div>
+              <div class="item-subtitle">Hayatian Computing Society</div>
+            </div>
+            <div class="item-date">2024 – 2025</div>
+          </div>
+          <p class="item-desc">Directed the Hayatian Computing Society in CS Department, promoting innovation and technical skill-building through events and collaborative initiatives.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">OpenHPC Cluster Administration</div>
+              <div class="item-subtitle">NUST University</div>
+            </div>
+            <div class="item-date">Jul 2025 – Present</div>
+          </div>
+          <p class="item-desc">Working on the administration of three HPC clusters (81 nodes) using OpenHPC and OpenStack. Responsibilities include server management, performance optimization, GPU workload assignments, software deployment, and conducting training sessions for students and researchers.</p>
+          <div class="tags">
+            <span class="tag">OpenHPC</span>
+            <span class="tag">OpenStack</span>
+            <span class="tag">GPU Management</span>
+            <span class="tag">Training</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Cascade – Cloud AI Integration</div>
+              <div class="item-subtitle">Open-source Contribution</div>
+            </div>
+            <div class="item-date">Jul 2025 – Present</div>
+          </div>
+          <p class="item-desc">Open-source contributor (mentored by Dr. Corey Leong) to Cascade, developing AI-powered cloud-native solutions through scalable OpenStack deployments, Kubernetes orchestration, and communication system integration.</p>
+          <div class="tags">
+            <span class="tag">OpenStack</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Cloud-Native</span>
+            <span class="tag">AI Integration</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">PlayPulse AI Parental Control App</div>
+              <div class="item-subtitle">IGNITE Funded Project</div>
+            </div>
+            <div class="item-date">Jun 2024 – Apr 2025</div>
+          </div>
+          <p class="item-desc">Developing PlayPulse, an AI-powered parental control app (Flutter) funded by Ignite National Technology Fund, featuring AI content filtering, real-time monitoring, and adaptive usage controls.</p>
+          <div class="tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">AI</span>
+            <span class="tag">Content Filtering</span>
+            <span class="tag">Real-time Monitoring</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Weather ChatBot</div>
+              <div class="item-subtitle">LLM-powered Application</div>
+            </div>
+            <div class="item-date">May 2025 – Present</div>
+          </div>
+          <p class="item-desc">Developed an LLM-powered weather chatbot using GPT models for natural language understanding, integrating live weather data and secure interaction design.</p>
+          <div class="tags">
+            <span class="tag">LLM</span>
+            <span class="tag">GPT</span>
+            <span class="tag">NLP</span>
+            <span class="tag">API Integration</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">WheCan Count</div>
+              <div class="item-subtitle">AI Crop Monitoring Application</div>
+            </div>
+            <div class="item-date">Jul 2025</div>
+          </div>
+          <p class="item-desc">Developed an AI-based mobile app using image recognition to count wheat buds and detect beetles in canola crops, integrating real-time object detection and offline functionality for precision agriculture.</p>
+          <div class="tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Object Detection</span>
+            <span class="tag">Agriculture Tech</span>
+            <span class="tag">Mobile App</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Blockchain-Based Farmers App</div>
+              <div class="item-subtitle">Smart Farming Solution</div>
+            </div>
+            <div class="item-date">Jun 2025 – Present</div>
+          </div>
+          <p class="item-desc">Designed a blockchain-enabled smart farming app using drone imagery and GIS to provide crop traceability and real-time field activity tracking.</p>
+          <div class="tags">
+            <span class="tag">Blockchain</span>
+            <span class="tag">GIS</span>
+            <span class="tag">Drone Tech</span>
+            <span class="tag">Traceability</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Parallel Training of Image Data</div>
+              <div class="item-subtitle">Deep Learning Research</div>
+            </div>
+            <div class="item-date">Sep – Oct 2024</div>
+          </div>
+          <p class="item-desc">Explored parallel deep learning techniques by distributing ANN training across GPUs, optimizing scalability and convergence for large image datasets.</p>
+          <div class="tags">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">GPU Computing</span>
+            <span class="tag">Parallel Processing</span>
+            <span class="tag">Neural Networks</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <h3>Programming Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>Dart</li>
+            <li>C#</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Development</h3>
+          <ul class="skill-list">
+            <li>Mobile App Development</li>
+            <li>Flutter Development</li>
+            <li>Web App Development</li>
+            <li>Python Flask</li>
+            <li>AI Agents Development</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Artificial Intelligence</h3>
+          <ul class="skill-list">
+            <li>Deep Learning</li>
+            <li>Neural Networks</li>
+            <li>Machine Learning</li>
+            <li>Application Programming & AI</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Cloud Computing</h3>
+          <ul class="skill-list">
+            <li>Cloud Technologies</li>
+            <li>High Performance Computing</li>
+            <li>Cloud Monitoring</li>
+            <li>OpenStack & Ceph</li>
+            <li>Cloud Security</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="container">
+      <h2 class="section-title">Awards & Recognition</h2>
+      <div class="awards-grid">
+        
+        <div class="award-card">
+          <h3 class="award-title">Second Highest Achiever</h3>
+          <p class="award-org">University of Gujrat</p>
+          <p class="award-date">June 2025</p>
+          <p>Earned 2nd position in academic performance during undergraduate studies, demonstrating consistent excellence and dedication.</p>
+        </div>
+
+        <div class="award-card">
+          <h3 class="award-title">Winner – National Level FYP Funding</h3>
+          <p class="award-org">IGNITE National Technology Fund</p>
+          <p class="award-date">March 2025</p>
+          <p>Secured project funding from Ignite National Technology Fund for PlayPulse, an AI-based parental control application, recognized for its innovation and national impact.</p>
+        </div>
+
+        <div class="award-card">
+          <h3 class="award-title">Winner – Final Year Project Competition</h3>
+          <p class="award-org">University of Gujrat</p>
+          <p class="award-date">April 2025</p>
+          <p>Awarded 1st place for presenting an innovative and impactful final year project idea, selected among top entries at the departmental/university level.</p>
+        </div>
+
+        <div class="award-card">
+          <h3 class="award-title">Academic Achievement Award</h3>
+          <p class="award-org">University of Gujrat</p>
+          <p class="award-date">January 2024</p>
+          <p>Honored with cash prize for achieving the highest academic performance in the Computer Science department and batch, recognizing dedication and hard work in studies.</p>
+        </div>
+
+        <div class="award-card">
+          <h3 class="award-title">Certificate of Appreciation</h3>
+          <p class="award-org">University of Gujrat</p>
+          <p class="award-date">January 2024</p>
+          <p>Received certificate of appreciation for securing 2nd position in academic pursuits, highlighting commitment to excellence and hard work.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-grid">
+        
+        <div class="cert-card">
+          <h3 class="cert-title">IBM iOS and Android Mobile App Developer</h3>
+          <p class="cert-issuer">Coursera | June 2025</p>
+          <a href="https://www.coursera.org/account/accomplishments/professional-cert/J5WCFA359QS6" target="_blank" class="cert-link">Verify Certificate →</a>
+        </div>
+
+        <div class="cert-card">
+          <h3 class="cert-title">Private Cloud Management on IBM Power Systems</h3>
+          <p class="cert-issuer">IBM via Coursera | June 2025</p>
+          <a href="#" target="_blank" class="cert-link">Verify Certificate →</a>
+        </div>
+
+        <div class="cert-card">
+          <h3 class="cert-title">Introduction to OpenStack and Kubernetes Orchestrators</h3>
+          <p class="cert-issuer">Juniper Networks via Coursera | June 2025</p>
+          <a href="#" target="_blank" class="cert-link">Verify Certificate →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <h3>Let's Connect</h3>
+      <p>📧 muhammadazlan04274@gmail.com</p>
+      <p>📞 (+92) 3281556268</p>
+      <p>📍 Gujrat, Pakistan</p>
+      <div class="footer-social social-links" style="justify-content: center; margin-top: 28px;">
+        <a class="social-link" href="https://linkedin.com/in/muhammad-azlan-dev" target="_blank" style="background: rgba(255,255,255,0.15);">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M20.452 20.452h-3.555v-5.569c0-1.328-.027-3.036-1.85-3.036-1.853 0-2.136 1.447-2.136 2.94v5.665H9.356V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.367-1.85 3.6 0 4.267 2.37 4.267 5.451v6.29zM5.337 7.433a2.064 2.064 0 1 1 0-4.128 2.064 2.064 0 0 1 0 4.128zM7.114 20.452H3.56V9h3.555v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.73v20.54C0 23.226.792 24 1.771 24h20.454C23.2 24 24 23.226 24 22.27V1.73C24 .774 23.2 0 22.225 0z"/></svg>
+        </a>
+        <a class="social-link" href="https://github.com/Muhammad-Azlan-74" target="_blank" style="background: rgba(255,255,255,0.15);">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.16 9.09 7.55 10.57.55.1.75-.24.75-.53 0-.26-.01-1.12-.02-2.03-3.07.67-3.72-1.48-3.72-1.48-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.97 1.66 2.55 1.18 3.17.9.1-.7.38-1.18.69-1.45-2.45-.28-5.02-1.23-5.02-5.46 0-1.21.43-2.2 1.13-2.98-.11-.28-.49-1.4.11-2.92 0 0 .93-.3 3.05 1.13.89-.25 1.85-.38 2.8-.38.95 0 1.91.13 2.8.38 2.12-1.43 3.05-1.13 3.05-1.13.6 1.52.22 2.64.11 2.92.7.78 1.13 1.77 1.13 2.98 0 4.24-2.58 5.18-5.04 5.45.39.33.74.97.74 1.96 0 1.41-.01 2.55-.01 2.9 0 .29.2.64.76.53 4.38-1.48 7.54-5.65 7.54-10.57C23.25 5.48 18.27.5 12 .5z"/></svg>
+        </a>
+      </div>
+      <p style="margin-top: 40px; opacity: 0.7; font-size: 0.9rem;">© 2025 Muhammad Azlan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Active nav
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-link');
+    const setActive = () => {
+      let current = '';
+      sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 200) current = sec.id; });
+      links.forEach(link => {
+        link.setAttribute('aria-current', link.getAttribute('href').slice(1) === current ? 'true' : 'false');
+      });
+    };
+    setActive();
+    window.addEventListener('scroll', setActive, { passive: true });
+
+    // Reveal animations
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '0';
+          entry.target.style.transform = 'translateY(30px)';
+          requestAnimationFrame(() => {
+            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.timeline-item, .skill-card, .award-card, .cert-card').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
